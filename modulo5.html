@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 5 - Examen Final</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      padding: 2rem;
+      margin: 0;
+    }
+    .quiz-container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #1e3a8a;
+    }
+    .question {
+      margin-bottom: 2rem;
+    }
+    .question h3 {
+      margin-bottom: 0.5rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    button {
+      margin-top: 1rem;
+      background: #10b981;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #resultado {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #d1fae5;
+      border: 1px solid #10b981;
+      border-radius: 8px;
+      font-weight: bold;
+      display: none;
+    }
+    #btnDiploma {
+      display: none;
+      margin-top: 1rem;
+      background: #1e3a8a;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    #volverInicio {
+      display: inline-block;
+      margin-top: 1rem;
+      background: #3b82f6;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+    <h1>Examen Final - Excel Básico</h1>
+
+    <!-- Preguntas -->
+    <div class="question">
+      <h3>1. ¿Cuál es la fórmula correcta para sumar valores en Excel?</h3>
+      <label><input type="radio" name="q1" value="a"> =RESTAR(A1:A5)</label>
+      <label><input type="radio" name="q1" value="b"> =SUMA(A1:A5)</label>
+      <label><input type="radio" name="q1" value="c"> =CONTAR(A1:A5)</label>
+    </div>
+
+    <div class="question">
+      <h3>2. ¿Qué función se utiliza para obtener el valor más alto?</h3>
+      <label><input type="radio" name="q2" value="a"> =MIN(A1:A5)</label>
+      <label><input type="radio" name="q2" value="b"> =MAX(A1:A5)</label>
+      <label><input type="radio" name="q2" value="c"> =MAYOR(A1:A5)</label>
+    </div>
+
+    <div class="question">
+      <h3>3. ¿Qué tipo de gráfico se recomienda para comparar categorías?</h3>
+      <label><input type="radio" name="q3" value="a"> Gráfico de líneas</label>
+      <label><input type="radio" name="q3" value="b"> Gráfico de dispersión</label>
+      <label><input type="radio" name="q3" value="c"> Gráfico de columnas</label>
+    </div>
+
+    <div class="question">
+      <h3>4. ¿Qué hace una tabla dinámica en Excel?</h3>
+      <label><input type="radio" name="q4" value="a"> Borra datos duplicados</label>
+      <label><input type="radio" name="q4" value="b"> Ordena los datos alfabéticamente</label>
+      <label><input type="radio" name="q4" value="c"> Resume y agrupa datos automáticamente</label>
+    </div>
+
+    <div class="question">
+      <h3>5. ¿Qué fórmula te permite calcular el promedio?</h3>
+      <label><input type="radio" name="q5" value="a"> =PROMEDIO(A1:A5)</label>
+      <label><input type="radio" name="q5" value="b"> =MEDIA(A1:A5)</label>
+      <label><input type="radio" name="q5" value="c"> =SUMA(A1:A5)/5</label>
+    </div>
+
+    <div class="question">
+      <h3>6. ¿Qué símbolo se usa para hacer referencia absoluta en una fórmula?</h3>
+      <label><input type="radio" name="q6" value="a"> *</label>
+      <label><input type="radio" name="q6" value="b"> $</label>
+      <label><input type="radio" name="q6" value="c"> @</label>
+    </div>
+
+    <!-- Botón de enviar -->
+    <button onclick="evaluar()">Enviar respuestas</button>
+
+    <!-- Resultado y certificado -->
+    <div id="resultado"></div>
+    <a id="btnDiploma" href="certificado.pdf" download>🎓 Descargar Certificado</a>
+
+    <!-- Volver al inicio -->
+    <br>
+    <a id="volverInicio" href="index.html">← Volver al Inicio</a>
+  </div>
+
+  <script>
+    function evaluar() {
+      const respuestas = [
+        { name: "q1", correcta: "b" },
+        { name: "q2", correcta: "b" },
+        { name: "q3", correcta: "c" },
+        { name: "q4", correcta: "c" },
+        { name: "q5", correcta: "a" },
+        { name: "q6", correcta: "b" }
+      ];
+
+      let score = 0;
+
+      for (const r of respuestas) {
+        const seleccionada = document.querySelector(`input[name="${r.name}"]:checked`);
+        if (!seleccionada) {
+          alert("Por favor responde todas las preguntas.");
+          return;
+        }
+        if (seleccionada.value === r.correcta) score++;
+      }
+
+      const resultado = document.getElementById("resultado");
+      resultado.style.display = "block";
+      resultado.innerText = `Obtuviste ${score} de ${respuestas.length} respuestas correctas.`;
+
+      const btnDiploma = document.getElementById("btnDiploma");
+      if (score >= 5) {
+        resultado.innerText += " ¡Felicidades! Has aprobado el curso. 🎉";
+        btnDiploma.style.display = "inline-block";
+      } else {
+        resultado.innerText += " Sigue practicando para dominar Excel. 💪";
+        btnDiploma.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>

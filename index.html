@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototipo Cursos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f3f4f6;
+      color: #111827;
+    }
+    header {
+      background-color: #1f2937;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+    header h1 {
+      font-size: 1.5rem;
+    }
+    .signin-btn {
+      background: #3b82f6;
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .bienvenida {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .bienvenida h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .tablero h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .curso {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      margin-top: 1rem;
+    }
+    .curso h4 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .btn-modulo {
+      background: #10b981;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #e5e7eb;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Plataforma de Cursos Lashlo
+    </h1>
+    <button class="signin-btn" onclick="window.location.href='login.html'">Iniciar Sesión</button>
+  </header>
+
+  <section class="bienvenida">
+    <h2>¡Bienvenido a la Plataforma!</h2>
+    <p>Accede a tus cursos, aprende a tu ritmo y mejora tus habilidades.</p>
+  </section>
+
+  <section class="tablero">
+    <h3>Tablero:</h3>
+
+    <div class="curso">
+      <h4>Curso: Excel Básico</h4>
+      <p>Aprende desde cero a dominar las herramientas principales de Excel.</p>
+      <button class="btn-modulo" onclick="window.location.href='modulo1.html'">Empezar Módulos
+      </button>
+    </div>
+  </section>
+
+  <section class="contacto">
+    <h3 style="margin-top: 3rem;">¿Dudas o preguntas?</h3>
+    <p>Escríbenos a: <a href="mailto:contacto@lashlo.mx">contacto@lashlo.mx</a></p>
+  </section>
+
+  <footer>
+    © 2025 Plataforma de Cursos Lashlo | Todos los derechos reservados
+  </footer>
+
+</body>
+</html>

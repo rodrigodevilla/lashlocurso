@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 4 - Excel Básico</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    main {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+    }
+    .contenido {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .contenido h3 {
+      margin-bottom: 1rem;
+    }
+    .contenido ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+    }
+    .btn {
+      margin-top: 1rem;
+      display: inline-block;
+      background: #10b981;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    #completadoMensaje {
+      display: none;
+      margin-top: 1rem;
+      background: #d1fae5;
+      color: #065f46;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Curso de Excel Básico</h1>
+    <p>Módulo 4: Tablas dinámicas y reportes</p>
+  </header>
+
+  <main>
+    <div class="contenido">
+      <h3>Temas de este módulo:</h3>
+      <ul>
+        <li>Qué es una tabla dinámica</li>
+        <li>Cómo generar reportes automáticos</li>
+        <li>Resumen de datos por categorías</li>
+        <li>Segmentación de datos</li>
+      </ul>
+
+      <button id="iniciarBtn" class="btn">Iniciar Módulo</button>
+
+      <div id="videoContainer" style="margin-top: 2rem; display: none;">
+        <h3>Clase en video</h3>
+        <iframe width="100%" height="400" 
+          src="https://www.youtube.com/embed/rfscVS0vtbw" 
+          title="Clase Excel - Módulo 4" 
+          frameborder="0" allowfullscreen></iframe>
+
+          <a href="pdfexcel.pdf" class="btn" download style="background: #3b82f6;">📥 Descargar PDF</a>
+        <button class="btn" id="completadoBtn" style="background: #6366f1;">✅ Marcar como Completado</button>
+
+        <div id="completadoMensaje">¡Módulo completado! 🏁 ¡Estás más cerca de dominar Excel!</div>
+      </div>
+      <a href="modulo5.html" class="btn" style="background: #6366f1;">Siguiente Módulo →</a>
+
+
+      <a href="index.html" class="btn" style="background: #3b82f6;">← Volver al Tablero</a>
+    </div>
+  </main>
+
+  <script>
+    const iniciarBtn = document.getElementById('iniciarBtn');
+    const videoContainer = document.getElementById('videoContainer');
+    const completadoBtn = document.getElementById('completadoBtn');
+    const completadoMensaje = document.getElementById('completadoMensaje');
+
+    
+
+    iniciarBtn.addEventListener('click', () => {
+      videoContainer.style.display = 'block';
+      iniciarBtn.style.display = 'none';
+    });
+
+    completadoBtn.addEventListener('click', () => {
+      completadoMensaje.style.display = 'block';
+      completadoBtn.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
