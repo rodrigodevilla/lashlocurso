@@ -3,14 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login | Plataforma de Cursos Lashlo</title>
+  <title>Inducción | Plataforma de Cursos Lashlo</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f3f4f6;
@@ -33,9 +29,7 @@
       align-items: center;
       gap: 1rem;
     }
-    header img {
-      height: 50px;
-    }
+    header img { height: 50px; }
     .signin-btn {
       background: #3b82f6;
       border: none;
@@ -52,43 +46,57 @@
     }
     main {
       flex: 1;
+      padding: 2rem;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      padding: 2rem;
     }
-    .login-container {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 100%;
-      max-width: 400px;
-    }
-    .login-container h2 {
-      margin-bottom: 1rem;
+    .hero-induccion {
+      background: linear-gradient(135deg, #3b82f6, #60a5fa);
+      color: white;
+      padding: 3rem 2rem;
+      border-radius: 15px;
       text-align: center;
-    }
-    .login-container input {
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
       width: 100%;
-      padding: 0.75rem;
-      margin-top: 1rem;
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
+      max-width: 900px;
     }
-    .login-container button {
+    .hero-induccion h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .hero-induccion p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    .video-container {
+      position: relative;
       width: 100%;
+      max-width: 800px;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      margin-top: 2rem;
+    }
+    iframe, video {
+      width: 100%;
+      height: 450px;
+      border: none;
+    }
+    .volver-btn {
+      margin-top: 2rem;
       background: #10b981;
       color: white;
-      padding: 0.75rem;
+      padding: 0.75rem 2rem;
       border: none;
-      border-radius: 8px;
-      margin-top: 1.5rem;
+      border-radius: 10px;
       cursor: pointer;
       font-weight: bold;
+      font-size: 1rem;
       transition: all 0.3s ease;
     }
-    .login-container button:hover {
+    .volver-btn:hover {
       background-color: #059669;
       transform: scale(1.05);
     }
@@ -110,12 +118,16 @@
   </header>
 
   <main>
-    <div class="login-container">
-      <h2>Iniciar Sesión</h2>
-      <input type="text" placeholder="Usuario">
-      <input type="password" placeholder="Contraseña">
-      <button onclick="window.location.href='index.html'">Entrar</button>
+    <div class="hero-induccion">
+      <h2>Bienvenido a la Inducción de Lashlo</h2>
+      <p>Descubre quiénes somos y cómo transformarás tu futuro con nosotros.</p>
     </div>
+
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video Inducción Lashlo" allowfullscreen></iframe>
+    </div>
+
+    <button class="volver-btn" onclick="window.location.href='index.html'">← Volver al Inicio</button>
   </main>
 
   <footer>

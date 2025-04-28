@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prototipo Cursos</title>
+  <title>Plataforma de Cursos Lashlo</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -17,7 +17,7 @@
       color: #111827;
     }
     header {
-      background-color: #1f2937;
+      background-color: #11255d;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -26,6 +26,12 @@
     }
     header h1 {
       font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    header img {
+      height: 50px;
     }
     .signin-btn {
       background: #3b82f6;
@@ -35,19 +41,49 @@
       border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .signin-btn:hover {
+      background-color: #2563eb;
+      transform: scale(1.05);
     }
     section {
       padding: 2rem;
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
     }
-    .bienvenida {
+    .hero-induccion {
+      background: linear-gradient(135deg, #3b82f6, #60a5fa);
+      color: white;
+      padding: 3rem 2rem;
+      border-radius: 15px;
       text-align: center;
-      margin-bottom: 3rem;
+      margin-top: 2rem;
+      margin-bottom: 4rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
-    .bienvenida h2 {
+    .hero-induccion h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
+    }
+    .hero-induccion p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    .hero-btn {
+      background: #10b981;
+      color: white;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .hero-btn:hover {
+      background: #059669;
+      transform: scale(1.05);
     }
     .tablero h3 {
       font-size: 1.5rem;
@@ -58,7 +94,12 @@
       padding: 1.5rem;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      margin-top: 1rem;
+      margin-top: 2rem;
+      transition: transform 0.3s ease;
+    }
+    .curso:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     }
     .curso h4 {
       font-size: 1.25rem;
@@ -72,6 +113,16 @@
       border-radius: 8px;
       cursor: pointer;
       margin-top: 1rem;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .btn-modulo:hover {
+      background-color: #059669;
+      transform: scale(1.05);
+    }
+    .contacto {
+      text-align: center;
+      margin-top: 4rem;
     }
     footer {
       text-align: center;
@@ -84,25 +135,40 @@
 <body>
 
   <header>
-    <h1>Plataforma de Cursos Lashlo
+    <h1>
+      <img src="logo.png" alt="Logo Lashlo">
+      Plataforma de Cursos Lashlo
     </h1>
     <button class="signin-btn" onclick="window.location.href='login.html'">Iniciar Sesión</button>
   </header>
 
-  <section class="bienvenida">
-    <h2>¡Bienvenido a la Plataforma!</h2>
-    <p>Accede a tus cursos, aprende a tu ritmo y mejora tus habilidades.</p>
+  <section class="hero-induccion">
+    <h2>¡Comienza tu Viaje en Lashlo!</h2>
+    <p>Descubre nuestra cultura, valores y la manera en que cambiarás tu futuro. Da el primer paso viendo nuestra inducción.</p>
+    <button class="hero-btn" onclick="window.location.href='induccion.html'">Ver Inducción 🎥</button>
   </section>
 
   <section class="tablero">
-    <h3>Tablero:</h3>
+    <h3>Tablero de Cursos:</h3>
 
     <div class="curso">
       <h4>Curso: Excel Básico</h4>
       <p>Aprende desde cero a dominar las herramientas principales de Excel.</p>
-      <button class="btn-modulo" onclick="window.location.href='modulo1.html'">Empezar Módulos
-      </button>
+      <button class="btn-modulo" onclick="window.location.href='modulo1.html'">Empezar Módulos</button>
     </div>
+
+    <div class="curso">
+      <h4>Curso A: Análisis de Datos</h4>
+      <p>Explora el mundo del análisis de datos usando herramientas prácticas y ejemplos reales.</p>
+      <button class="btn-modulo" onclick="window.location.href='cursoamod1.html'">Ir al Curso A</button>
+    </div>
+
+    <div class="curso">
+      <h4>Curso B: Comunicación Efectiva</h4>
+      <p>Aprende técnicas de comunicación para mejorar tus relaciones personales y profesionales.</p>
+      <button class="btn-modulo" onclick="window.location.href='cursobmod1.html'">Ir al Curso B</button>
+    </div>
+
   </section>
 
   <section class="contacto">
