@@ -4,8 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plataforma de Cursos Lashlo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
+    :root {
+      --primary: #3b82f6;
+      --accent: #10b981;
+      --dark: #11255d;
+      --light: #f9fafb;
+      --shadow: rgba(0, 0, 0, 0.05);
+    }
     * {
       margin: 0;
       padding: 0;
@@ -13,172 +21,215 @@
     }
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f3f4f6;
-      color: #111827;
+      background: linear-gradient(to bottom right, #eef2f7, #dbeafe);
+      color: #1f2937;
     }
     header {
-      background-color: #11255d;
+      background-color: var(--dark);
+      color: white;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: white;
     }
-    header h1 {
-      font-size: 1.5rem;
+    .logo {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.8rem;
+      font-size: 1.2rem;
+      font-weight: 700;
     }
-    header img {
-      height: 50px;
+    .logo img {
+      height: 35px;
     }
-    .signin-btn {
-      background: #3b82f6;
-      border: none;
+    .user-profile {
+      background: var(--primary);
       color: white;
       padding: 0.5rem 1rem;
       border-radius: 8px;
+      font-weight: 600;
       cursor: pointer;
-      font-weight: bold;
-      transition: all 0.3s ease;
     }
-    .signin-btn:hover {
-      background-color: #2563eb;
-      transform: scale(1.05);
-    }
-    section {
+    main {
       padding: 2rem;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: auto;
     }
-    .hero-induccion {
-      background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    .hero {
+      background: radial-gradient(circle at top left, #3b82f6, #2563eb);
       color: white;
       padding: 3rem 2rem;
-      border-radius: 15px;
+      border-radius: 20px;
       text-align: center;
-      margin-top: 2rem;
-      margin-bottom: 4rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      margin-bottom: 3rem;
     }
-    .hero-induccion h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.7rem;
     }
-    .hero-induccion p {
+    .hero p {
       font-size: 1.1rem;
-      margin-bottom: 2rem;
     }
-    .hero-btn {
-      background: #10b981;
-      color: white;
+    .hero button {
+      margin-top: 1.5rem;
       padding: 0.75rem 2rem;
       font-size: 1rem;
       border: none;
       border-radius: 10px;
-      cursor: pointer;
+      background: var(--accent);
+      color: white;
       font-weight: bold;
-      transition: all 0.3s ease;
+      cursor: pointer;
     }
-    .hero-btn:hover {
+    .hero button:hover {
       background: #059669;
-      transform: scale(1.05);
     }
-    .tablero h3 {
-      font-size: 1.5rem;
+    .section-title {
+      margin: 2.5rem 0 1rem;
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #1f2937;
+    }
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .course-card {
+      background: white;
+      border-left: 6px solid var(--accent);
+      padding: 1.5rem;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px var(--shadow);
+    }
+    .course-card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+    }
+    .course-card p {
       margin-bottom: 1rem;
     }
-    .curso {
-      background-color: white;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      margin-top: 2rem;
-      transition: transform 0.3s ease;
-    }
-    .curso:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    }
-    .curso h4 {
-      font-size: 1.25rem;
+    .course-card .badge {
+      background: #fde68a;
+      color: #92400e;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      display: inline-block;
       margin-bottom: 0.5rem;
     }
-    .btn-modulo {
-      background: #10b981;
-      color: white;
-      padding: 0.5rem 1rem;
+    .course-card a {
+      text-decoration: none;
+    }
+    .course-card .access-btn {
+      background: #3b82f6;
       border: none;
+      color: white;
+      padding: 0.5rem 1.25rem;
       border-radius: 8px;
-      cursor: pointer;
-      margin-top: 1rem;
       font-weight: bold;
-      transition: all 0.3s ease;
-    }
-    .btn-modulo:hover {
-      background-color: #059669;
-      transform: scale(1.05);
-    }
-    .contacto {
-      text-align: center;
-      margin-top: 4rem;
+      cursor: pointer;
+      display: inline-block;
     }
     footer {
-      text-align: center;
+      margin-top: 4rem;
       padding: 2rem;
-      background: #e5e7eb;
-      margin-top: 3rem;
+      background: #f3f4f6;
+      text-align: center;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-
   <header>
-    <h1>
-      <img src="logo.png" alt="Logo Lashlo">
+    <div class="logo">
+      <img src="logo.png" alt="Lashlo Logo">
       Plataforma de Cursos Lashlo
-    </h1>
-    <button class="signin-btn" onclick="window.location.href='login.html'">Iniciar Sesión</button>
+    </div>
+    <div class="user-profile">Iniciar Sesión</div>
   </header>
+  <main>
+    <section class="hero">
+      <h1>¡Comienza tu Viaje en Lashlo!</h1>
+      <p>Descubre nuestra cultura, valores y la manera en que cambiarás tu futuro. Da el primer paso viendo nuestra inducción.</p>
+      <button onclick="location.href='induccion.html'">Ver Inducción 🎥</button>
+    </section>
 
-  <section class="hero-induccion">
-    <h2>¡Comienza tu Viaje en Lashlo!</h2>
-    <p>Descubre nuestra cultura, valores y la manera en que cambiarás tu futuro. Da el primer paso viendo nuestra inducción.</p>
-    <button class="hero-btn" onclick="window.location.href='induccion.html'">Ver Inducción 🎥</button>
-  </section>
+    <h2 class="section-title">📊 Excel y Habilidades Técnicas</h2>
+    <section class="courses-grid">
+      <div class="course-card">
+        <span class="badge">Nuevo</span>
+        <h3>Curso Power BI 📊</h3>
+        <p>Domina funciones avanzadas de Power BI y visualiza como un profesional.</p>
+        <a href="https://campus.datacamp.com/courses/introduction-to-power-bi/getting-started-with-power-bi?ex=1"><button class="access-btn">¡Iniciar!</button></a>
+      </div>
+      <div class="course-card">
+        <span class="badge">Gratis</span>
+        <h3>Introducción a Excel 📘</h3>
+        <p>Aprende los conceptos básicos de Excel para comenzar desde cero.</p>
+        <a href="https://app.datacamp.com/learn/courses/introduction-to-excel"><button class="access-btn">Acceder Gratis</button></a>
+      </div>
+      <div class="course-card">
+        <span class="badge">Santander</span>
+        <h3>Excel Conceptos Básicos 🎓</h3>
+        <p>Curso gratuito patrocinado por Santander para fortalecer tus habilidades.</p>
+        <a href="https://lms.santanderopenacademy.com/courses/148/pages/introduccion?module_item_id=3618"><button class="access-btn">Acceder Gratis</button></a>
+      </div>
+    </section>
 
-  <section class="tablero">
-    <h3>Tablero de Cursos:</h3>
+    <h2 class="section-title">🧠 Habilidades Humanas</h2>
+    <section class="courses-grid">
+      <div class="course-card">
+        <span class="badge">Recomendado</span>
+        <h3>Comunicación Efectiva 🗣️</h3>
+        <p>Mejora tu forma de expresarte y conecta mejor con los demás.</p>
+        <a href="https://www.youtube.com/watch?v=Xo2Q4PQqqWU"><button class="access-btn">Ver Video</button></a>
+      </div>
+      <div class="course-card">
+        <span class="badge">Nuevo</span>
+        <h3>Desarrollo Personal 💼</h3>
+        <p>Aprende a guiarte con inteligencia emocional y motivación por Brian Tracy.</p>
+        <a href="https://open.spotify.com/show/1s4uoQY1C0IAnvHJE0rUMb"><button class="access-btn">Acceder</button></a>
+      </div>
+      <div class="course-card">
+        <span class="badge">Gratis</span>
+        <h3>Resolución de Conflictos 🤝</h3>
+        <p>Herramientas prácticas para manejar desacuerdos de forma efectiva.</p>
+        <a href="#"><button class="access-btn">Acceder</button></a>
+      </div>
+    </section>
 
-    <div class="curso">
-      <h4>Curso: Excel Básico</h4>
-      <p>Aprende desde cero a dominar las herramientas principales de Excel.</p>
-      <button class="btn-modulo" onclick="window.location.href='modulo1.html'">Empezar Módulos</button>
-    </div>
-
-    <div class="curso">
-      <h4>Curso A: Análisis de Datos</h4>
-      <p>Explora el mundo del análisis de datos usando herramientas prácticas y ejemplos reales.</p>
-      <button class="btn-modulo" onclick="window.location.href='cursoamod1.html'">Ir al Curso A</button>
-    </div>
-
-    <div class="curso">
-      <h4>Curso B: Comunicación Efectiva</h4>
-      <p>Aprende técnicas de comunicación para mejorar tus relaciones personales y profesionales.</p>
-      <button class="btn-modulo" onclick="window.location.href='cursobmod1.html'">Ir al Curso B</button>
-    </div>
-
-  </section>
-
-  <section class="contacto">
-    <h3 style="margin-top: 3rem;">¿Dudas o preguntas?</h3>
-    <p>Escríbenos a: <a href="mailto:contacto@lashlo.mx">contacto@lashlo.mx</a></p>
-  </section>
+    <h2 class="section-title">🚀 Habilidades Profesionales</h2>
+    <section class="courses-grid">
+      <div class="course-card">
+        <span class="badge">Top</span>
+        <h3>Gestión del Tiempo ⏰</h3>
+        <p>Organiza tus tareas y sé más productivo sin estrés.</p>
+        <a href="#"><button class="access-btn">Acceder</button></a>
+      </div>
+      <div class="course-card">
+        <span class="badge">Pro</span>
+        <h3>Presentaciones Impactantes 🎤</h3>
+        <p>Aprende a diseñar y exponer ideas que inspiren.</p>
+        <a href="#"><button class="access-btn">Acceder</button></a>
+      </div>
+      <div class="course-card">
+        <span class="badge">Gratis</span>
+        <h3>Herramientas Digitales 💻</h3>
+        <p>Domina apps modernas que mejoran tu rendimiento laboral.</p>
+        <a href="#"><button class="access-btn">Acceder</button></a>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    © 2025 Plataforma de Cursos Lashlo | Todos los derechos reservados
+    <div class="footer-links">
+      <a href="#">Contacto</a>
+      <a href="#">Términos</a>
+      <a href="#">Política de privacidad</a>
+    </div>
+    <p>© 2025 Plataforma de Cursos Lashlo | Todos los derechos reservados</p>
   </footer>
-
 </body>
 </html>
