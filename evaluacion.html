@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluación RH - Lashlo Career</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+ <style>
+
+    
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom right, #eef2ff, #e0e7ff);
+      color: #1e293b;
+    }
+    header {
+      background: linear-gradient(90deg, #4f46e5, #3b82f6);
+      padding: 1.5rem 2rem;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+    }
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+    form {
+      background: white;
+      padding: 2rem;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+    }
+    label {
+      display: block;
+      margin: 1rem 0 0.25rem;
+      font-weight: 600;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+    }
+    button {
+      margin-top: 2rem;
+      background: #4f46e5;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Evaluación RH - Lashlo Career</h1>
+    <p>Formulario de evaluación de colaborador</p>
+  </header>
+  <main>
+    <h2>📋 Evaluación de Desempeño</h2>
+    <form>
+      <label for="colaborador">Selecciona al colaborador a evaluar:</label>
+      $1
+        <option value="laura">Laura Gómez</option>
+        <option value="david">David Ruiz</option>
+        <option value="otro">Otro...</option>
+      </select>
+      <div id="otro-nombre" style="display:none; margin-top: 1rem;">
+        <label for="nuevoNombre">Especifica el nombre:</label>
+        <input type="text" id="nuevoNombre" name="nuevoNombre" style="width: 100%; padding: 0.5rem; border: 1px solid #cbd5e1; border-radius: 8px;" />
+      </div>
+      <script>
+        const datos = localStorage.getItem('evaluacion-laura');
+      
+        if (datos) {
+          const evalData = JSON.parse(datos);
+          const promedio = evalData.respuestas.reduce((a, b) => a + b, 0) / evalData.respuestas.length;
+      
+          document.querySelector('.evaluation-card').innerHTML = `
+            <h3>📊 Evaluación de Desempeño Reciente</h3>
+            <p><strong>Promedio:</strong> ${promedio.toFixed(1)} / 10</p>
+            <button id="verDetalles">Ver Detalles</button>
+            <div id="detalles-evaluacion" style="display:none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb;">
+              <ul style="padding-left: 1.2rem; line-height: 1.6;">
+                ${evalData.respuestas.map((r, i) => `<li><strong>Pregunta ${i + 1}:</strong> ${r}</li>`).join('')}
+              </ul>
+            </div>
+          `;
+      
+          document.getElementById('verDetalles').addEventListener('click', function () {
+            const detalles = document.getElementById('detalles-evaluacion');
+            detalles.style.display = detalles.style.display === 'none' ? 'block' : 'none';
+            this.textContent = detalles.style.display === 'block' ? 'Ocultar Detalles' : 'Ver Detalles';
+          });
+        } else {
+          document.querySelector('.evaluation-card').innerHTML = `
+            <h3>📊 Evaluación de Desempeño Reciente</h3>
+            <p>No se ha registrado una evaluación aún.</p>
+          `;
+        }
+      </script>
+      
+      <label for="q1">1. Comunicación efectiva (1-10)</label>
+      <input type="number" id="q1" min="1" max="10" />
+      <label for="q2">2. Trabajo en equipo (1-10)</label>
+      <input type="number" id="q2" min="1" max="10" />
+      <label for="q3">3. Toma de decisiones (1-10)</label>
+      <input type="number" id="q3" min="1" max="10" />
+      <label for="q4">4. Proactividad (1-10)</label>
+      <input type="number" id="q4" min="1" max="10" />
+      <label for="q5">5. Adaptabilidad (1-10)</label>
+      <input type="number" id="q5" min="1" max="10" />
+      <label for="q6">6. Resolución de problemas (1-10)</label>
+      <input type="number" id="q6" min="1" max="10" />
+      <label for="q7">7. Liderazgo (1-10)</label>
+      <input type="number" id="q7" min="1" max="10" />
+      <label for="q8">8. Gestión del tiempo (1-10)</label>
+      <input type="number" id="q8" min="1" max="10" />
+      <label for="q9">9. Ética laboral (1-10)</label>
+      <input type="number" id="q9" min="1" max="10" />
+      <label for="q10">10. Creatividad (1-10)</label>
+      <input type="number" id="q10" min="1" max="10" />
+      <label for="q11">11. Capacidad de aprendizaje (1-10)</label>
+      <input type="number" id="q11" min="1" max="10" />
+      <label for="q12">12. Empatía (1-10)</label>
+      <input type="number" id="q12" min="1" max="10" />
+      <label for="q13">13. Escucha activa (1-10)</label>
+      <input type="number" id="q13" min="1" max="10" />
+      <label for="q14">14. Pensamiento crítico (1-10)</label>
+      <input type="number" id="q14" min="1" max="10" />
+      <label for="q15">15. Compromiso con resultados (1-10)</label>
+      <input type="number" id="q15" min="1" max="10" />
+      <button type="submit">Enviar Evaluación</button>
+    <a href="admin.html" style="text-decoration: none;">
+        <button type="button" style="margin-top: 1rem; background: #e0e7ff; color: #4f46e5; padding: 0.6rem 1.2rem; border: none; border-radius: 8px; cursor: pointer;">⬅ Volver a Admin</button>
+      </a>
+  </main>
+</body>
+</html>

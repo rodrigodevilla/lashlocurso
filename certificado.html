@@ -1,151 +1,63 @@
+<!-- certificado.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Certificado | Plataforma de Cursos Lashlo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <title>Certificado de Finalización</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f9fafb;
-      color: #111827;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    header {
-      background-color: #11255d;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-    }
-    header img { height: 50px; }
-    header h1 {
-      font-size: 1.5rem;
+      background: #f9fafb;
       display: flex;
       align-items: center;
-      gap: 1rem;
-    }
-    .signin-btn {
-      background: #3b82f6;
-      border: none;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-    .signin-btn:hover {
-      background: #2563eb;
-      transform: scale(1.05);
-    }
-    main {
-      flex: 1;
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-    }
-    .hero {
-      background: linear-gradient(135deg, #10b981, #34d399);
-      color: white;
-      padding: 3rem 2rem;
-      border-radius: 15px;
-      margin-bottom: 2rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    .hero h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.1rem;
-    }
-    .certificado-img {
-      margin-top: 3rem;
-      max-width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    }
-    .botones {
-      margin-top: 3rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
       justify-content: center;
+      height: 100vh;
     }
-    button {
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      padding: 0.75rem 2rem;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
+    .certificado {
+      border: 6px solid #3b82f6;
+      padding: 3rem;
+      text-align: center;
+      background: white;
+      border-radius: 20px;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     }
-    .btn-descargar {
+    h1 {
+      color: #3b82f6;
+    }
+    p {
+      font-size: 1.1rem;
+      margin: 1.5rem 0;
+    }
+    .descargar-btn {
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
       background: #10b981;
       color: white;
-      animation: pulse 2s infinite;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
     }
-    .btn-descargar:hover {
+    .descargar-btn:hover {
       background: #059669;
-      transform: scale(1.05);
-    }
-    .btn-tablero {
-      background: #9ca3af;
-      color: white;
-    }
-    .btn-tablero:hover {
-      background: #6b7280;
-      transform: scale(1.05);
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #e5e7eb;
-      margin-top: 4rem;
     }
   </style>
 </head>
 <body>
-
-<header>
-  <h1><img src="logo.png" alt="Logo Lashlo"> Plataforma de Cursos Lashlo</h1>
-  <button class="signin-btn" onclick="window.location.href='index.html'">Inicio</button>
-</header>
-
-<main>
-
-  <section class="hero">
-    <h2>¡Felicidades!</h2>
-    <p>Has completado exitosamente el curso. Tu certificado está listo para ser descargado.</p>
-  </section>
-
-  <img src="certificado.png" alt="Certificado" class="certificado-img">
-
-  <div class="botones">
-    <a href="certificado.pdf" download>
-      <button class="btn-descargar">🎓 Descargar Certificado</button>
-    </a>
-    <button class="btn-tablero" onclick="window.location.href='index.html'">🏠 Volver al Tablero</button>
+  <div class="certificado">
+    <h1>🎓 Certificado de Finalización</h1>
+    <p>Este documento certifica que <strong>Rodrigo de Villa</strong> ha completado satisfactoriamente Lashlo <strong>Skills</strong> en la plataforma <strong>Lashlo</strong>.</p>
+    <p>Fecha de emisión: <strong id="fecha"></strong></p>
+    <button class="descargar-btn" onclick="window.print()">Descargar / Imprimir</button>
   </div>
 
-</main>
-
-<footer>
-  © 2025 Plataforma de Cursos Lashlo | Todos los derechos reservados
-</footer>
-
+  <script>
+    const fecha = new Date().toLocaleDateString("es-MX", {
+      day: 'numeric', month: 'long', year: 'numeric'
+    });
+    document.getElementById("fecha").innerText = fecha;
+  </script>
 </body>
 </html>

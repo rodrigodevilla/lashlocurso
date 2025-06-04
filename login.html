@@ -1,126 +1,135 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login | Plataforma de Cursos Lashlo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Lashlo Skils</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Rubik', sans-serif;
     }
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f3f4f6;
-      color: #111827;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    header {
-      background-color: #11255d;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-    }
-    header h1 {
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    header img {
-      height: 50px;
-    }
-    .signin-btn {
-      background: #3b82f6;
-      border: none;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-    .signin-btn:hover {
-      background-color: #2563eb;
-      transform: scale(1.05);
-    }
-    main {
-      flex: 1;
+      background: #eeece9;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 2rem;
+      height: 100vh;
     }
-    .login-container {
+    .login-card {
       background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 100%;
-      max-width: 400px;
+      border-radius: 12px;
+      padding: 3rem 2.5rem;
+      width: 360px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+      text-align: center;
     }
-    .login-container h2 {
+    .login-card img {
+      width: 60px;
       margin-bottom: 1rem;
-      text-align: center;
     }
-    .login-container input {
-      width: 100%;
-      padding: 0.75rem;
-      margin-top: 1rem;
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
+    .login-card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.3rem;
     }
-    .login-container button {
+    .login-card p {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+    .login-card input {
       width: 100%;
-      background: #10b981;
-      color: white;
-      padding: 0.75rem;
+      padding: 0.7rem;
+      margin: 0.5rem 0;
       border: none;
-      border-radius: 8px;
-      margin-top: 1.5rem;
+      border-bottom: 2px solid #333;
+      background: transparent;
+      font-size: 1rem;
+    }
+    .password-container {
+      position: relative;
+    }
+    .password-container .eye {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
       cursor: pointer;
-      font-weight: bold;
-      transition: all 0.3s ease;
     }
-    .login-container button:hover {
-      background-color: #059669;
-      transform: scale(1.05);
+    .checkbox-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      margin: 1rem 0;
     }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #e5e7eb;
+    .checkbox-row label {
+      display: flex;
+      align-items: center;
+    }
+    .checkbox-row input {
+      margin-right: 0.4rem;
+    }
+    .btn-black {
+      background: #1e1e1e;
+      color: white;
+      border: none;
+      padding: 0.9rem;
+      width: 100%;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+    .btn-light {
+      background: #e4e1dc;
+      color: #1e1e1e;
+      border: none;
+      padding: 0.9rem;
+      width: 100%;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-light span {
+      margin-left: 0.5rem;
     }
   </style>
 </head>
 <body>
+  <div class="login-card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Logo_Metaverso.png" alt="Logo" />
+    <h2>Lashlo Skils</h2>
+    <p>Bienvenido</p>
 
-  <header>
-    <h1>
-      <img src="logo.png" alt="Logo Lashlo">
-      Plataforma de Cursos Lashlo
-    </h1>
-    <button class="signin-btn" onclick="window.location.href='index.html'">Inicio</button>
-  </header>
+    <form action="nuevo.html">
+      <input type="text" placeholder="Usuario" required />
+      <div class="password-container">
+        <input type="password" placeholder="Contraseña" id="password" required />
+        <span class="eye" onclick="togglePassword()">&#128065;</span>
+      </div>
 
-  <main>
-    <div class="login-container">
-      <h2>Iniciar Sesión</h2>
-      <input type="text" placeholder="Usuario">
-      <input type="password" placeholder="Contraseña">
-      <button onclick="window.location.href='index.html'">Entrar</button>
-    </div>
-  </main>
+      <div class="checkbox-row">
+        <label><input type="checkbox" /> Recuerda contraseña</label>
+        <a href="#">Forgot Password?</a>
+      </div>
 
-  <footer>
-    © 2025 Plataforma de Cursos Lashlo | Todos los derechos reservados
-  </footer>
+      <button class="btn-black" type="submit">Log In</button>
+      <button class="btn-light" type="button">🌐 <span>Log in with Email</span></button>
+    </form>
+  </div>
 
+  <script>
+    function togglePassword() {
+      const passInput = document.getElementById("password");
+      passInput.type = passInput.type === "password" ? "text" : "password";
+    }
+  </script>
 </body>
 </html>

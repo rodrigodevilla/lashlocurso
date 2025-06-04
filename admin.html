@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administración - Lashlo Career</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom right, #eef2ff, #e0e7ff);
+      color: #1e293b;
+    }
+    header {
+      background: linear-gradient(90deg, #4f46e5, #3b82f6);
+      padding: 2rem;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-bottom: 0.2rem;
+    }
+    header p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    main {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease;
+      border-left: 6px solid #6366f1;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .progress-container {
+      background: #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+      height: 10px;
+      margin-top: 0.5rem;
+    }
+    .progress-bar {
+      height: 100%;
+      background: #6366f1;
+      width: 65%;
+    }
+    .toggle-btn {
+      margin-top: 1rem;
+      background: #e0e7ff;
+      border: 1px solid #c7d2fe;
+      color: #3730a3;
+      font-weight: 600;
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .toggle-btn:hover {
+      background: #c7d2fe;
+    }
+    .info-section {
+      display: none;
+      margin-top: 1rem;
+      padding: 1rem 1.5rem;
+      background: #f9fafb;
+      border-radius: 12px;
+      border-left: 4px solid #6366f1;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+      max-width: 1000px;
+    }
+    .info-section ul {
+      padding-left: 1.2rem;
+      list-style: disc;
+      margin-top: 0.5rem;
+    }
+    .button-primary {
+      background: #4f46e5;
+      color: white;
+      padding: 0.7rem 1.4rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .button-primary:hover {
+      background: #4338ca;
+    }
+    .card-center {
+      margin-top: 3rem;
+      text-align: center;
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      border-left: 6px solid #3b82f6;
+    }
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+    }
+    .summary-table th, .summary-table td {
+      border: 1px solid #e5e7eb;
+      padding: 0.85rem;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    .summary-table th {
+      background-color: #f3f4f6;
+      font-weight: 600;
+    }
+    .summary-table tbody tr:hover {
+      background-color: #f9fafb;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Resumen RH - Lashlo Career</h1>
+    <p>Panel de administración de colaboradores</p>
+  </header>
+
+  <main>
+
+    <!-- TARJETAS -->
+    <div class="grid">
+      <div class="card">
+        <h3>📊 Progreso General</h3>
+        <p>65% promedio general de avance</p>
+        <div class="progress-container"><div class="progress-bar"></div></div>
+        <button class="toggle-btn" onclick="toggleSection('progreso-info')">Ver más</button>
+      </div>
+      <div class="card">
+        <h3>⭐ Etapas Actuales</h3>
+        <p>12 colaboradores en "Líder de Proyecto"</p>
+        <p>5 en "Gestor de Equipo"</p>
+        <button class="toggle-btn" onclick="toggleSection('etapas-info')">Ver más</button>
+      </div>
+      <div class="card">
+        <h3>✅ Cursos Completados</h3>
+        <p>Promedio por colaborador: 7.3</p>
+        <button class="toggle-btn" onclick="toggleSection('cursos-info')">Ver más</button>
+      </div>
+      <div class="card">
+        <h3>📈 Evaluaciones</h3>
+        <ul>
+          <li>Promedio: 89.2%</li>
+          <li>Próxima evaluación: 18 mayo</li>
+        </ul>
+        <button class="toggle-btn" onclick="toggleSection('evaluaciones-info')">Ver más</button>
+      </div>
+    </div>
+
+    <!-- SECCIONES DESPLEGABLES -->
+    <div id="progreso-info" class="info-section">
+      <strong>Detalle de Progreso:</strong>
+      <ul>
+        <li>Laura Gómez – 80%</li>
+        <li>David Ruiz – 58%</li>
+      </ul>
+    </div>
+
+    <div id="etapas-info" class="info-section">
+      <strong>Detalle de Etapas:</strong>
+      <ul>
+        <li>Laura Gómez – Líder de Proyecto</li>
+        <li>David Ruiz – Analista Senior</li>
+      </ul>
+    </div>
+
+    <div id="cursos-info" class="info-section">
+      <strong>Cursos Completados:</strong>
+      <ul>
+        <li>Laura Gómez – 9 cursos</li>
+        <li>David Ruiz – 5 cursos</li>
+      </ul>
+    </div>
+
+    <div id="evaluaciones-info" class="info-section">
+      <strong>Evaluaciones Individuales:</strong>
+      <ul>
+        <li>Laura Gómez – 92%</li>
+        <li>David Ruiz – 84%</li>
+      </ul>
+    </div>
+
+    <!-- BOTÓN DE EVALUACIÓN -->
+    <div class="card-center">
+      <h3>📋 Evaluación de Desempeño</h3>
+      <p>Realiza la evaluación RH completa del colaborador</p>
+      <a href="evaluacion.html"><button class="button-primary" style="margin-top: 1.2rem;">Ir a Evaluación</button></a>
+    </div>
+
+    <!-- TABLA -->
+    <div style="margin-top: 3rem">
+      <h2 style="font-family: 'Playfair Display', serif;">Detalle de Colaboradores</h2>
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Etapa</th>
+            <th>Progreso</th>
+            <th>Cursos</th>
+            <th>Habilidades Faltantes</th>
+            <th>Evaluaciones</th>
+            <th>Próximos Steps</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Laura Gómez</td>
+            <td>Líder de Proyecto</td>
+            <td>80%</td>
+            <td>9</td>
+            <td>Resolución de conflictos</td>
+            <td>92%</td>
+            <td>Evaluación final + Coaching</td>
+          </tr>
+          <tr>
+            <td>David Ruiz</td>
+            <td>Analista Senior</td>
+            <td>58%</td>
+            <td>5</td>
+            <td>Excel avanzado, Feedback</td>
+            <td>84%</td>
+            <td>Curso liderazgo + Mentoring</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- SCRIPT PARA MOSTRAR / OCULTAR -->
+  <script>
+    function toggleSection(id) {
+      const section = document.getElementById(id);
+      section.style.display = section.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>

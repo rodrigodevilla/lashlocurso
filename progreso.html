@@ -1,0 +1,77 @@
+<!-- progreso.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Progreso del Curso - Lashlo</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f0f4f8;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 1.5rem;
+      color: #1f2937;
+    }
+    .checklist {
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .checklist label {
+      display: block;
+      margin: 1rem 0;
+      font-size: 1.1rem;
+    }
+    .btn-certificado {
+      display: none;
+      margin-top: 2rem;
+      background: #10b981;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn-certificado:hover {
+      background: #059669;
+    }
+  </style>
+</head>
+<body>
+  <h1>✅ Verifica que hayas terminado todos los cursos</h1>
+  <div class="checklist">
+    <label><input type="checkbox" class="curso"> Curso Power BI 📊</label>
+    <label><input type="checkbox" class="curso"> Introducción a Excel 📘</label>
+    <label><input type="checkbox" class="curso"> Excel Conceptos Básicos 🎓</label>
+    <label><input type="checkbox" class="curso"> Comunicación Efectiva 🗣️</label>
+    <label><input type="checkbox" class="curso"> Desarrollo Personal 💼</label>
+    <label><input type="checkbox" class="curso"> Resolución de Conflictos 🤝</label>
+    <label><input type="checkbox" class="curso"> Gestión del Tiempo ⏰</label>
+    <label><input type="checkbox" class="curso"> Presentaciones Impactantes 🎤</label>
+    <label><input type="checkbox" class="curso"> Herramientas Digitales 💻</label>
+
+    <a href="certificado.html"><button id="btnCert" class="btn-certificado">🎓 Obtener Certificado</button></a>
+  </div>
+
+  <script>
+    const checkboxes = document.querySelectorAll('.curso');
+    const btnCert = document.getElementById('btnCert');
+
+    checkboxes.forEach(chk => {
+      chk.addEventListener('change', () => {
+        const completados = Array.from(checkboxes).every(c => c.checked);
+        btnCert.style.display = completados ? 'inline-block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
