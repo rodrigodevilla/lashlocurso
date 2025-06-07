@@ -1,271 +1,397 @@
+<!-- Parte 1 del nuevo rediseño completo -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Administración - Lashlo Career</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Administrativo - Lashlo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    body {
+    :root {
+      --primary: #6366f1;
+      --bg: #f9fafb;
+      --text: #1f2937;
+      --white: #ffffff;
+      --gray-light: #e5e7eb;
+    }
+
+    *, *::before, *::after {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom right, #eef2ff, #e0e7ff);
-      color: #1e293b;
+      background-color: var(--bg);
+      color: var(--text);
+      height: 100%;
+      width: 100%;
     }
-    header {
-      background: linear-gradient(90deg, #4f46e5, #3b82f6);
-      padding: 2rem;
-      color: white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+    body {
+      display: flex;
     }
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      margin-bottom: 0.2rem;
+
+    aside {
+      width: 240px;
+      background-color: var(--white);
+      padding: 2rem 1rem;
+      border-right: 1px solid var(--gray-light);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
+      position: sticky;
+      top: 0;
     }
-    header p {
-      font-size: 1rem;
-      opacity: 0.9;
-    }
-    main {
-      padding: 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s ease;
-      border-left: 6px solid #6366f1;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    .card h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
+      color: var(--primary);
     }
-    .progress-container {
-      background: #e5e7eb;
-      border-radius: 8px;
-      overflow: hidden;
-      height: 10px;
-      margin-top: 0.5rem;
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.6rem 0.9rem;
+      border-radius: 10px;
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+      transition: background 0.2s;
     }
-    .progress-bar {
-      height: 100%;
-      background: #6366f1;
-      width: 65%;
+
+    nav a:hover,
+    nav a.active {
+      background-color: #eef2ff;
+      color: var(--primary);
     }
-    .toggle-btn {
-      margin-top: 1rem;
-      background: #e0e7ff;
-      border: 1px solid #c7d2fe;
-      color: #3730a3;
-      font-weight: 600;
-      padding: 0.5rem 1.2rem;
-      border-radius: 8px;
+
+    main {
+      flex: 1;
+      padding: 2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .search-input input {
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--gray-light);
+      border-radius: 10px;
+      width: 280px;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .user-info img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+    }
+
+    .toggle-theme {
       cursor: pointer;
-      transition: background 0.2s ease;
     }
-    .toggle-btn:hover {
-      background: #c7d2fe;
+
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
     }
-    .info-section {
-      display: none;
-      margin-top: 1rem;
-      padding: 1rem 1.5rem;
-      background: #f9fafb;
+
+    .stats-row {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-card {
+      flex: 1;
+      min-width: 220px;
+      background: var(--white);
+      padding: 1.2rem 1.5rem;
       border-radius: 12px;
-      border-left: 4px solid #6366f1;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-      max-width: 1000px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
-    .info-section ul {
-      padding-left: 1.2rem;
-      list-style: disc;
-      margin-top: 0.5rem;
-    }
-    .button-primary {
-      background: #4f46e5;
-      color: white;
-      padding: 0.7rem 1.4rem;
+
+    .stat-card h3 {
+      font-size: 1rem;
       font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+    }
+
+    .stat-card p {
+      font-size: 0.95rem;
+      color: #4b5563;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-buttons button {
+      padding: 0.5rem 1rem;
+      background-color: #eef2ff;
+      color: var(--primary);
       border: none;
       border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
-    .button-primary:hover {
-      background: #4338ca;
-    }
-    .card-center {
-      margin-top: 3rem;
-      text-align: center;
-      background: white;
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
-      border-left: 6px solid #3b82f6;
-    }
-    .summary-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 2rem;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
-    }
-    .summary-table th, .summary-table td {
-      border: 1px solid #e5e7eb;
-      padding: 0.85rem;
-      text-align: left;
-      font-size: 0.95rem;
-    }
-    .summary-table th {
-      background-color: #f3f4f6;
       font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
     }
-    .summary-table tbody tr:hover {
-      background-color: #f9fafb;
+
+    .filter-buttons button:hover {
+      background-color: #c7d2fe;
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <h1>Resumen RH - Lashlo Career</h1>
-    <p>Panel de administración de colaboradores</p>
-  </header>
+  <aside>
+    <div>
+      <div class="logo"><i class="fas fa-user-cog"></i> ADMIN</div>
+      <nav>
+        <a href="#" class="active"><i class="fas fa-chart-line"></i> Dashboard</a>
+        <a href="nuevo.html"><i class="fas fa-house"></i> Home</a>
+        <a href="index.html"><i class="fas fa-book"></i> Cursos</a>
+        <a href="#"><i class="fas fa-users"></i> Colaboradores</a>
+      </nav>
+    </div>
+    <div>
+      <a href="#" style="display: flex; align-items: center; gap: 0.6rem; color: var(--text);"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+    </div>
+  </aside>
 
   <main>
-
-    <!-- TARJETAS -->
-    <div class="grid">
-      <div class="card">
-        <h3>📊 Progreso General</h3>
-        <p>65% promedio general de avance</p>
-        <div class="progress-container"><div class="progress-bar"></div></div>
-        <button class="toggle-btn" onclick="toggleSection('progreso-info')">Ver más</button>
+    <div class="header">
+      <div class="search-input">
+        <input type="text" placeholder="Buscar colaborador, módulo...">
       </div>
-      <div class="card">
-        <h3>⭐ Etapas Actuales</h3>
-        <p>12 colaboradores en "Líder de Proyecto"</p>
-        <p>5 en "Gestor de Equipo"</p>
-        <button class="toggle-btn" onclick="toggleSection('etapas-info')">Ver más</button>
-      </div>
-      <div class="card">
-        <h3>✅ Cursos Completados</h3>
-        <p>Promedio por colaborador: 7.3</p>
-        <button class="toggle-btn" onclick="toggleSection('cursos-info')">Ver más</button>
-      </div>
-      <div class="card">
-        <h3>📈 Evaluaciones</h3>
-        <ul>
-          <li>Promedio: 89.2%</li>
-          <li>Próxima evaluación: 18 mayo</li>
-        </ul>
-        <button class="toggle-btn" onclick="toggleSection('evaluaciones-info')">Ver más</button>
+      <div class="user-info">
+        <span>Admin</span>
+        <img src="https://i.pravatar.cc/36?img=30" alt="Foto admin">
+        <div class="toggle-theme" onclick="document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'">
+          <i class="fas fa-moon"></i>
+        </div>
       </div>
     </div>
 
-    <!-- SECCIONES DESPLEGABLES -->
-    <div id="progreso-info" class="info-section">
-      <strong>Detalle de Progreso:</strong>
+    <h1>Resumen Administrativo</h1>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <h3><i class="fas fa-chart-line"></i> Progreso General</h3>
+        <p>65% promedio general de avance</p>
+      </div>
+      <div class="stat-card">
+        <h3><i class="fas fa-star"></i> Etapas Actuales</h3>
+        <p>12 en "Líder de Proyecto", 5 en "Gestor de Equipo"</p>
+      </div>
+      <div class="stat-card">
+        <h3><i class="fas fa-check-circle"></i> Cursos Completados</h3>
+        <p>Promedio por colaborador: 7.3</p>
+      </div>
+      <div class="stat-card">
+        <h3><i class="fas fa-chart-pie"></i> Evaluaciones</h3>
+        <p>Promedio: 89.2%, Próxima: 18 mayo</p>
+      </div>
+    </div>
+
+    <div class="filter-buttons">
+      <button onclick="toggleSection('progreso-info')">Ver Progreso</button>
+      <button onclick="toggleSection('etapas-info')">Ver Etapas</button>
+      <button onclick="toggleSection('cursos-info')">Ver Cursos</button>
+      <button onclick="toggleSection('evaluaciones-info')">Ver Evaluaciones</button>
+    </div>
+
+    <!-- Parte 2: Secciones de detalle y tabla -->
+
+    <section id="progreso-info" class="info-section" style="display:none">
+      <h2>Detalle de Progreso</h2>
       <ul>
         <li>Laura Gómez – 80%</li>
         <li>David Ruiz – 58%</li>
       </ul>
-    </div>
+    </section>
 
-    <div id="etapas-info" class="info-section">
-      <strong>Detalle de Etapas:</strong>
+    <section id="etapas-info" class="info-section" style="display:none">
+      <h2>Detalle de Etapas</h2>
       <ul>
         <li>Laura Gómez – Líder de Proyecto</li>
         <li>David Ruiz – Analista Senior</li>
       </ul>
-    </div>
+    </section>
 
-    <div id="cursos-info" class="info-section">
-      <strong>Cursos Completados:</strong>
+    <section id="cursos-info" class="info-section" style="display:none">
+      <h2>Cursos Completados</h2>
       <ul>
         <li>Laura Gómez – 9 cursos</li>
         <li>David Ruiz – 5 cursos</li>
       </ul>
-    </div>
+    </section>
 
-    <div id="evaluaciones-info" class="info-section">
-      <strong>Evaluaciones Individuales:</strong>
+    <section id="evaluaciones-info" class="info-section" style="display:none">
+      <h2>Evaluaciones Individuales</h2>
       <ul>
         <li>Laura Gómez – 92%</li>
         <li>David Ruiz – 84%</li>
       </ul>
-    </div>
+    </section>
 
-    <!-- BOTÓN DE EVALUACIÓN -->
-    <div class="card-center">
-      <h3>📋 Evaluación de Desempeño</h3>
-      <p>Realiza la evaluación RH completa del colaborador</p>
-      <a href="evaluacion.html"><button class="button-primary" style="margin-top: 1.2rem;">Ir a Evaluación</button></a>
-    </div>
+    <style>
+      .info-section {
+        background-color: var(--white);
+        border: 1px solid var(--gray-light);
+        border-radius: 12px;
+        padding: 1.2rem 1.5rem;
+        margin-top: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      }
+      .info-section h2 {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+      }
+      .info-section ul {
+        padding-left: 1.2rem;
+        list-style: disc;
+        color: #4b5563;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 2rem;
+        background: var(--white);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      }
+      table th, table td {
+        padding: 0.9rem 1rem;
+        border-bottom: 1px solid var(--gray-light);
+        font-size: 0.95rem;
+        text-align: left;
+      }
+      table thead {
+        background: #eef2ff;
+        color: var(--primary);
+        font-weight: 600;
+      }
+      table tbody tr:hover {
+        background-color: #f1f5f9;
+      }
+    </style>
 
-    <!-- TABLA -->
-    <div style="margin-top: 3rem">
-      <h2 style="font-family: 'Playfair Display', serif;">Detalle de Colaboradores</h2>
-      <table class="summary-table">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Etapa</th>
-            <th>Progreso</th>
-            <th>Cursos</th>
-            <th>Habilidades Faltantes</th>
-            <th>Evaluaciones</th>
-            <th>Próximos Steps</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Laura Gómez</td>
-            <td>Líder de Proyecto</td>
-            <td>80%</td>
-            <td>9</td>
-            <td>Resolución de conflictos</td>
-            <td>92%</td>
-            <td>Evaluación final + Coaching</td>
-          </tr>
-          <tr>
-            <td>David Ruiz</td>
-            <td>Analista Senior</td>
-            <td>58%</td>
-            <td>5</td>
-            <td>Excel avanzado, Feedback</td>
-            <td>84%</td>
-            <td>Curso liderazgo + Mentoring</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Etapa</th>
+          <th>Progreso</th>
+          <th>Cursos</th>
+          <th>Habilidades Faltantes</th>
+          <th>Evaluaciones</th>
+          <th>Próximos Steps</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Laura Gómez</td>
+          <td>Líder de Proyecto</td>
+          <td>80%</td>
+          <td>9</td>
+          <td>Resolución de conflictos</td>
+          <td>92%</td>
+          <td>Evaluación final + Coaching</td>
+        </tr>
+        <tr>
+          <td>David Ruiz</td>
+          <td>Analista Senior</td>
+          <td>58%</td>
+          <td>5</td>
+          <td>Excel avanzado, Feedback</td>
+          <td>84%</td>
+          <td>Curso liderazgo + Mentoring</td>
+        </tr>
+      </tbody>
+    </table>
 
-  </main>
+    <script>
+      function toggleSection(id) {
+        const sections = ['progreso-info', 'etapas-info', 'cursos-info', 'evaluaciones-info'];
+        sections.forEach(s => {
+          document.getElementById(s).style.display = 'none';
+        });
+        const selected = document.getElementById(id);
+        if (selected) selected.style.display = 'block';
+      }
+    </script>
 
-  <!-- SCRIPT PARA MOSTRAR / OCULTAR -->
-  <script>
-    function toggleSection(id) {
-      const section = document.getElementById(id);
-      section.style.display = section.style.display === 'block' ? 'none' : 'block';
-    }
-  </script>
-</body>
-</html>
+    <!-- Parte 3: Gráfico de Evaluaciones -->
+    <canvas id="chartEvaluaciones" height="100"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const ctx = document.getElementById('chartEvaluaciones').getContext('2d');
+      const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Laura Gómez', 'David Ruiz'],
+          datasets: [{
+            label: 'Evaluaciones (%)',
+            data: [92, 84],
+            backgroundColor: ['#6366f1', '#c7d2fe'],
+            borderRadius: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: false
+            },
+            title: {
+              display: true,
+              text: 'Evaluaciones por Colaborador'
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 100,
+              ticks: {
+                callback: function(value) {
+                  return value + '%';
+                }
+              }
+            }
+          }
+        }
+      });
+    </script>
